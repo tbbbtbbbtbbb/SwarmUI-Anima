@@ -1,0 +1,21 @@
+{
+  "reference": {
+    "bit_identical": true,
+    "shape": [
+      1,
+      1024,
+      768
+    ],
+    "skips_model_load": true
+  },
+  "pose": {
+    "bit_identical": true,
+    "shape": [
+      1,
+      1024,
+      1024,
+      3
+    ],
+    "skips_model_load": true
+  }
+}

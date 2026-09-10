@@ -1,0 +1,27 @@
+[
+  {
+    "profile": "base",
+    "bit_identical": true,
+    "mean_pixel_difference": 0.0
+  },
+  {
+    "profile": "base-turbo",
+    "bit_identical": true,
+    "mean_pixel_difference": 0.0
+  },
+  {
+    "profile": "miao",
+    "bit_identical": true,
+    "mean_pixel_difference": 0.0
+  },
+  {
+    "profile": "miao-turbo",
+    "bit_identical": true,
+    "mean_pixel_difference": 0.0
+  },
+  {
+    "profile": "miao-turbo-plain",
+    "bit_identical": false,
+    "mean_pixel_difference": 0.09612464904785156
+  }
+]

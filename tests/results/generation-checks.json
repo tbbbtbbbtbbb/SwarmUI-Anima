@@ -1,0 +1,152 @@
+[
+  {
+    "profile": "base",
+    "case": "baseline",
+    "pixel_sha256": "27646f40765fe35077fac1938790fa66e0f37d144770a4cc656ef4b86300c813",
+    "seconds": 60.63
+  },
+  {
+    "profile": "base",
+    "case": "reference",
+    "pixel_sha256": "ee236d12cdf8866617a03026454158bfbdb0df187ad75defcee1657249c1a878",
+    "seconds": 71.3
+  },
+  {
+    "profile": "base",
+    "case": "pose",
+    "pixel_sha256": "b5b233727adcc11c42f8a924fe9d8504dbeb730c953dd8c8ec8c97b5c4c15c8e",
+    "seconds": 57.98
+  },
+  {
+    "profile": "base",
+    "case": "combined",
+    "pixel_sha256": "ee740d461ee9d5599025054dccbbb76c29e507d5f22ba484c94eab48a436eb5a",
+    "seconds": 71.3
+  },
+  {
+    "profile": "base",
+    "case": "zero",
+    "pixel_sha256": "27646f40765fe35077fac1938790fa66e0f37d144770a4cc656ef4b86300c813",
+    "seconds": 55.57
+  },
+  {
+    "profile": "base-turbo",
+    "case": "baseline",
+    "pixel_sha256": "11d2d373dcbcdb5796bb876c584d2194d4cd4775f0831575bd540184f0ecdd99",
+    "seconds": 14.85
+  },
+  {
+    "profile": "base-turbo",
+    "case": "reference",
+    "pixel_sha256": "f5624514f1e464622f940609dee61e8455d72929c682251b62b89dd9de54c6d6",
+    "seconds": 17.59
+  },
+  {
+    "profile": "base-turbo",
+    "case": "pose",
+    "pixel_sha256": "e2fd68edd1973460cbba4a84b2f3b91bc899eea39b34f0d198bebb89d834b1fb",
+    "seconds": 14.66
+  },
+  {
+    "profile": "base-turbo",
+    "case": "combined",
+    "pixel_sha256": "c4b71d8873343c85aff4b6d4e95b000a04c051bde98f256695aef3af26c3257f",
+    "seconds": 18.55
+  },
+  {
+    "profile": "base-turbo",
+    "case": "zero",
+    "pixel_sha256": "11d2d373dcbcdb5796bb876c584d2194d4cd4775f0831575bd540184f0ecdd99",
+    "seconds": 13.2
+  },
+  {
+    "profile": "miao",
+    "case": "baseline",
+    "pixel_sha256": "d9a9b6d7a6d9a93821049268a0d26b77e0080a1d40c7ed907c6cc6a751925455",
+    "seconds": 68.7
+  },
+  {
+    "profile": "miao",
+    "case": "reference",
+    "pixel_sha256": "594f5a336aaae45a5def3ab60094e9660c500213be4d5cc7be1f7d0b061ae258",
+    "seconds": 79.5
+  },
+  {
+    "profile": "miao",
+    "case": "pose",
+    "pixel_sha256": "6e63bf0351e454f2f026a0904dacb500fc89d977b6952b98ef4642a3ea3418d2",
+    "seconds": 69.14
+  },
+  {
+    "profile": "miao",
+    "case": "combined",
+    "pixel_sha256": "f49a8d0ee4cee98dddec546d134c7f2abc108f6f84d5af1029e16c8dc342e4de",
+    "seconds": 82.96
+  },
+  {
+    "profile": "miao",
+    "case": "zero",
+    "pixel_sha256": "d9a9b6d7a6d9a93821049268a0d26b77e0080a1d40c7ed907c6cc6a751925455",
+    "seconds": 65.96
+  },
+  {
+    "profile": "miao-turbo",
+    "case": "baseline",
+    "pixel_sha256": "c10f7b36dfe2724a594ffb31f59f6491740a890cb3f9708c5630204e60ba3708",
+    "seconds": 21.47
+  },
+  {
+    "profile": "miao-turbo",
+    "case": "reference",
+    "pixel_sha256": "818e04b9cecaba87b683397a0d79de2276fa7edb897b41bdc9663a5111b20c76",
+    "seconds": 22.81
+  },
+  {
+    "profile": "miao-turbo",
+    "case": "pose",
+    "pixel_sha256": "0b941bc84a28a49df0a2829009123866d5e664ee46d8624b6e87e40cef8b151c",
+    "seconds": 18.48
+  },
+  {
+    "profile": "miao-turbo",
+    "case": "combined",
+    "pixel_sha256": "e90861501e00e3b190f966013546353c29bfa568ee2f0a79b74955a798a42b06",
+    "seconds": 24.44
+  },
+  {
+    "profile": "miao-turbo",
+    "case": "zero",
+    "pixel_sha256": "c10f7b36dfe2724a594ffb31f59f6491740a890cb3f9708c5630204e60ba3708",
+    "seconds": 17.84
+  },
+  {
+    "profile": "miao-turbo-plain",
+    "case": "baseline",
+    "pixel_sha256": "95e55dfcfedc5f5c92b9fb84a5458b3fe611347df0346c83ce440f78964a2f2f",
+    "seconds": 20.65
+  },
+  {
+    "profile": "miao-turbo-plain",
+    "case": "reference",
+    "pixel_sha256": "7090fb38a421660fe3f1e6c37183befb65453b4a4a6796e96e4f69261988685b",
+    "seconds": 15.81
+  },
+  {
+    "profile": "miao-turbo-plain",
+    "case": "pose",
+    "pixel_sha256": "4b477c80a94de3bb5d5c98ceb5ceaf8e6d917150cd5ad909d06ee2c292604417",
+    "seconds": 13.91
+  },
+  {
+    "profile": "miao-turbo-plain",
+    "case": "combined",
+    "pixel_sha256": "639e0e8f07f34408d992acb5d8ef9dfb229e6d993b5c195150307ffec5e1b2f3",
+    "seconds": 16.52
+  },
+  {
+    "profile": "miao-turbo-plain",
+    "case": "zero",
+    "pixel_sha256": "12f664b22dcae5d2fd0f9beb93d6537d5b772a86098c25ee1544907bb2ed7180",
+    "seconds": 12.36
+  }
+]

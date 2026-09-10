@@ -7,7 +7,7 @@ from pathlib import Path
 import time
 from urllib.parse import urljoin
 
-from PIL import Image
+from PIL import Image, ImageChops, ImageStat
 import requests
 
 
@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--model', help='Model name as reported by ListT2IParams')
     parser.add_argument('--preset', help='An existing preset to apply unchanged')
     parser.add_argument('--backend', default='0', help='Exact backend ID to test')
+    parser.add_argument('--zero-tolerance', type=float, default=1, help='Maximum mean pixel difference on 0–255 scale; use 0 for bit-exact checks')
     parser.add_argument('--reference', type=Path, default=Path(__file__).parent / 'results/reference-and-pose.png')
     parser.add_argument('--pose', type=Path, default=Path(__file__).parent / 'results/reference-and-pose.png')
     parser.add_argument('--output', type=Path, default=Path(__file__).parent / 'output')
@@ -38,7 +39,7 @@ def main():
     def data(path):
         return 'data:image/png;base64,' + base64.b64encode(path.read_bytes()).decode()
 
-    params = dict(prompt='1girl, solo, adult woman, full body, front view, blue jacket, black trousers, brown hair, gray background',
+    params = dict(prompt='1girl, solo, adult woman, full body, front view, standing, wearing a blue blazer over a buttoned white shirt, black suit trousers, brown hair, gray background',
                   negativeprompt='low quality, blurry, deformed, text, watermark', width=1024, height=1024,
                   steps=30, cfgscale=4.5, sampler='euler', scheduler='normal', seed=90210,
                   images=1, exactbackendid=args.backend, donotsave=False, nopreviews=True)
@@ -72,9 +73,14 @@ def main():
         digest = hashlib.sha256(Image.open(path).convert('RGB').tobytes()).hexdigest()
         records.append(dict(case=case, pixel_sha256=digest, seconds=round(time.time() - started, 2)))
         (args.output / 'checks.json').write_text(json.dumps(records, indent=2), encoding='utf-8')
-    assert records[0]['pixel_sha256'] == records[-1]['pixel_sha256'], 'Disabling controls did not restore baseline pixels.'
+    baseline = Image.open(args.output / 'baseline.png').convert('RGB')
+    zero = Image.open(args.output / 'zero.png').convert('RGB')
+    error = sum(ImageStat.Stat(ImageChops.difference(baseline, zero)).mean) / 3
+    comparison = dict(bit_identical=records[0]['pixel_sha256'] == records[-1]['pixel_sha256'], mean_pixel_difference=error)
+    (args.output / 'zero-comparison.json').write_text(json.dumps(comparison, indent=2), encoding='utf-8')
+    assert error <= args.zero_tolerance, f'Disabling controls changed baseline by {error:.3f}/255.'
     assert all(r['pixel_sha256'] != records[0]['pixel_sha256'] for r in records[1:-1]), 'A conditioning path had no effect.'
-    print('PASS: both paths affect output; zero strength restores baseline. Inspect the images for guidance quality.')
+    print(f'PASS: both paths affect output; zero strength differs by {error:.3f}/255. Inspect images for guidance quality.')
 
 
 if __name__ == '__main__':

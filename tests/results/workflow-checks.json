@@ -1,0 +1,10 @@
+[
+  "Exactly reference 1 selected from two images",
+  "Exactly reference 2 selected from two images",
+  "Invalid reference index and reversed time range rejected",
+  "Zero strengths omit all adapter, encoder and detector nodes",
+  "Non-Anima model ignores Anima controls",
+  "Anima Base General Turbo (Fast): sampling, prompts and LoRA values preserved with both controls",
+  "MiaoMiao Anima General (Slow): sampling, prompts and LoRA values preserved with both controls",
+  "MiaoMiao Anima General Turbo + Enhance (Fast): sampling, prompts and LoRA values preserved with both controls"
+]
