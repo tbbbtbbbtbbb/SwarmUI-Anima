@@ -16,27 +16,30 @@ and generation checks are recorded in [TESTING.md](TESTING.md).
    git clone https://github.com/tbbbtbbbtbbb/SwarmUI-Anima.git SwarmUI/src/Extensions/SwarmAnima
    ```
 
-2. With **the Python environment used by your ComfyUI backend**, run:
+2. Restart SwarmUI. Its self-started ComfyUI backend automatically installs the
+   pose dependency and downloads about **2.4 GB** of required model assets on its
+   first start. Wait for the backend to finish loading. No pip commands, separate
+   model downloads, or additional node plugins are needed.
 
-   ```sh
-   python -m pip install -r SwarmUI/src/Extensions/SwarmAnima/ExtraNodes/SwarmAnimaNodes/requirements.txt
-   python SwarmUI/src/Extensions/SwarmAnima/install_models.py --models-dir ComfyUI/models
-   ```
+First setup needs internet access and space for Character Reference 10, SigLIP2,
+Pose Preview-2, and two detectors. Progress appears in **Server → Logs → ComfyUI**.
+Downloads use pinned revisions and SHA-256 checks from
+[models.json](ExtraNodes/SwarmAnimaNodes/models.json), are shared by backends using
+the same model directory, and are reused on later starts. Existing files with
+different contents are preserved and reported. An interrupted download is retried
+on the next backend restart. Once setup succeeds, this extension works offline.
 
-   Adjust the paths for your installation. The installer downloads about 2.4 GB:
-   Character Reference 10, SigLIP2, Pose Preview-2, and two pose detectors. Downloads
-   use pinned revisions and SHA-256 checks from [models.json](models.json). Existing
-   files with different contents are left alone and reported as errors. Generation
-   runs offline after installation.
+Setup installs `rtmlib` if missing or older than the supported version. Swarm
+already supplies OpenCV and ONNX Runtime; plain ComfyUI installations get these
+automatically if missing, with existing package versions constrained. Setup does
+not upgrade PyTorch, CUDA packages, other installed libraries, or change presets. Use your
+usual Anima checkpoint; the automatic downloads are this extension's control assets.
 
-3. Restart SwarmUI with its launcher so the extension is compiled, then restart
-   the backend. If your custom launcher does not rebuild after changes, build
-   SwarmUI explicitly before launching it.
-
-Swarm's self-started ComfyUI backend discovers `ExtraNodes` automatically. For an
-external ComfyUI backend, install `ExtraNodes/SwarmAnimaNodes` under its
-`custom_nodes` directory, install its requirements and models there, then restart
-that backend. Every backend that runs these generations needs the nodes and models.
+For an **external ComfyUI server** that Swarm does not manage, install this same
+repository into that server's `ComfyUI/custom_nodes/SwarmAnima` and restart it.
+The same automatic setup runs there. Installing on the Swarm host cannot install
+code on a separate remote server. With a Swarm-to-Swarm
+backend, install the extension in the remote Swarm instance too.
 
 ## Use
 

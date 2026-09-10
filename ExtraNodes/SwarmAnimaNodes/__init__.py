@@ -2,7 +2,8 @@ from pathlib import Path
 
 import folder_paths
 
-folder_paths.folder_names_and_paths.setdefault('ipadapter', ([str(Path(folder_paths.models_dir) / 'ipadapter')], {'.safetensors'}))
+folder_paths.add_model_folder_path('ipadapter', str(Path(folder_paths.models_dir) / 'ipadapter'))
+folder_paths.folder_names_and_paths['ipadapter'][1].add('.safetensors')
 
 from .adapters import SwarmAnimaPoseApply, SwarmAnimaReference
 from .pose import SwarmAnimaPose
