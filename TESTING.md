@@ -148,6 +148,12 @@ The small [setup report](tests/results/automatic-setup-checks.json) records the
 fresh-download and offline-repeat timings. Required downloads happen once, during
 backend startup; internet access is unnecessary for subsequent extension use.
 
+After deployment, the real Swarm-managed backend ran the new hook in 1.5 seconds.
+Its package snapshot and all 51 saved preset maps were unchanged. The five-case
+MiaoMiao Turbo smoke test passed again: every image matched its corresponding
+pre-setup-update pixel hash, and zero strength was identical to baseline.
+The installed environment's dependency check also passed.
+
 ## Reproduce
 
 Run the cache tests in your ComfyUI Python environment:

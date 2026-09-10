@@ -6,5 +6,36 @@
   "bytes": 2411734784,
   "first_setup_seconds": 104.47,
   "offline_repeat_seconds": 1.59,
-  "offline_repeat_skips_pip_and_downloads": true
+  "offline_repeat_skips_pip_and_downloads": true,
+  "live_setup_seconds": 1.5,
+  "live_existing_packages_unchanged": true,
+  "unchanged_saved_presets": 51,
+  "live_smoke_matches_previous_pixels": true,
+  "live_smoke": [
+    {
+      "case": "baseline",
+      "pixel_sha256": "fd474e5d572e5c4e7541b462f1ea0d6a428427eb32b2526cce0eb6ab06469c02",
+      "seconds": 26.02
+    },
+    {
+      "case": "reference",
+      "pixel_sha256": "cfe544b9c727b25ea1869d813720d36979888ea1af942ad25dd9096f51df8bab",
+      "seconds": 16.71
+    },
+    {
+      "case": "pose",
+      "pixel_sha256": "330375c54c652b3a4d69cad7f83bc7df098c740332385f4b5bdc6b77020cbbff",
+      "seconds": 14.64
+    },
+    {
+      "case": "combined",
+      "pixel_sha256": "03871d6f47d6e63dde69102bb4e89ff0b5d8242572d5de1ddecdac02db444301",
+      "seconds": 14.92
+    },
+    {
+      "case": "zero",
+      "pixel_sha256": "fd474e5d572e5c4e7541b462f1ea0d6a428427eb32b2526cce0eb6ab06469c02",
+      "seconds": 11.0
+    }
+  ]
 }

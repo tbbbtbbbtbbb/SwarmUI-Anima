@@ -34,6 +34,7 @@ def ensure_dependencies():
         except PackageNotFoundError:
             pass
         print('[SwarmAnima] Installing pose dependency...', flush=True)
+        # rtmlib lists multiple OpenCV distributions; reuse the cv2 provider above.
         subprocess.run([sys.executable, '-m', 'pip', 'install', '--disable-pip-version-check',
                         '--no-input', '--no-deps', 'rtmlib==0.0.16'], check=True, timeout=600)
 
