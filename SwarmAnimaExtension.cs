@@ -30,7 +30,7 @@ public class SwarmAnimaExtension : Extension
             null, Group: group, FeatureFlag: "swarmanima", Toggleable: true, OrderPriority: 1, ImageShouldResize: false));
         PoseStrength = T2IParamTypes.Register<double>(new("Pose Strength",
             "How strongly the generated image follows Pose Image. Zero disables pose control.",
-            "0.8", Min: 0, Max: 2, Step: 0.05, Group: group, FeatureFlag: "swarmanima", OrderPriority: 2,
+            "1", Min: 0, Max: 2, Step: 0.05, Group: group, FeatureFlag: "swarmanima", OrderPriority: 2,
             ViewType: ParamViewType.SLIDER, DependNonDefault: PoseImage.Type.ID));
         ReferenceStrength = T2IParamTypes.Register<double>(new("Reference Strength",
             "Use one image from Swarm's Image Prompt input to guide Anima's appearance. Zero disables it. Extra images are ignored.",
@@ -58,7 +58,7 @@ public class SwarmAnimaExtension : Extension
         bool hasReference = g.UserInput.TryGet(T2IParamTypes.PromptImages, out List<Image> images) && images.Count > 0;
         bool hasPose = g.UserInput.TryGet(PoseImage, out Image pose);
         double referenceStrength = g.UserInput.Get(ReferenceStrength, 1);
-        double poseStrength = g.UserInput.Get(PoseStrength, 0.8);
+        double poseStrength = g.UserInput.Get(PoseStrength, 1);
         if ((!hasReference || referenceStrength == 0) && (!hasPose || poseStrength == 0))
         {
             return;

@@ -23,11 +23,12 @@ def render_pose(points, scores, width, height):
     for (a, b), color in zip(LIMBS, COLORS):
         if scores[a] >= 0.3 and scores[b] >= 0.3:
             cv2.line(canvas, tuple(points[a].astype(int)), tuple(points[b].astype(int)), color, 2)
-    for i, (point, score) in enumerate(zip(points, scores)):
-        if score >= 0.3:
+    # Match training's draw order, including faces drawn over overlapping hands.
+    for i in [*range(23), *range(91, 133), *range(23, 91)]:
+        if scores[i] >= 0.3:
             radius = 3 if i < 17 else 1 if i < 23 else 2
             color = (0, 255, 255) if i >= 91 else (255, 255, 255)
-            cv2.circle(canvas, tuple(point.astype(int)), radius, color, -1)
+            cv2.circle(canvas, tuple(points[i].astype(int)), radius, color, -1)
     return canvas
 
 
@@ -44,7 +45,7 @@ class SwarmAnimaPose:
     def detect(self, image, width, height):
         directory = Path(folder_paths.models_dir) / 'anima/detector'
         files = [directory / 'yolox.onnx', directory / 'dwpose.onnx']
-        key = image_key(image[:1].cpu(), f'dwpose-wholebody133-r0-v1-{version("rtmlib")}-{width}x{height}', files)
+        key = image_key(image[:1].cpu(), f'dwpose-wholebody133-r0-v2-{version("rtmlib")}-{width}x{height}', files)
 
         def compute():
             estimator = Wholebody(det=str(files[0]), det_input_size=(640, 640), pose=str(files[1]),

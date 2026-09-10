@@ -168,7 +168,7 @@ class SwarmAnimaPoseApply:
     @classmethod
     def INPUT_TYPES(cls):
         return {'required': {'model': ('MODEL',), 'control_latent': ('LATENT',),
-                             'strength': ('FLOAT', {'default': 0.8, 'min': 0, 'max': 2})}}
+                             'strength': ('FLOAT', {'default': 1.0, 'min': 0, 'max': 2})}}
 
     RETURN_TYPES = ('MODEL',)
     FUNCTION = 'apply'
@@ -181,7 +181,12 @@ class SwarmAnimaPoseApply:
         weights, _ = load_weights('loras', 'anima-pose-preview2.safetensors')
         patched = model.clone()
         apply_lora(patched, weights, 'diffusion_model.', strength)
-        patched.set_model_patch(PosePatch(control_latent['samples'],
+        control = control_latent['samples']
+        if control.ndim == 4:
+            control = control.unsqueeze(2)
+        # The control embedder consumes the same normalized latent space as the DiT.
+        control = model.model.process_latent_in(control)
+        patched.set_model_patch(PosePatch(control,
             weights['diffusion_model.control_embedder.proj.weight'],
             weights['diffusion_model.control_embedder.proj.bias'], strength), 'post_input')
         return (patched,)
