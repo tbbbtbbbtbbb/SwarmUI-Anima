@@ -97,6 +97,31 @@ the control embedder. A fixed-seed A/B recovered the raised arm after this chang
 doubling raw control strength instead produced artifacts. The renderer also
 matches the training code's hand/face draw order.
 
+## Installed-instance check
+
+After isolated validation, the same five-case smoke test passed on the installed
+SwarmUI instance, using its existing MiaoMiao Turbo preset through the native
+`presets` API parameter. The backend retained dynamic VRAM, pinned memory, and
+Swarm's `--fast fp16_accumulation cublas_ops` flags. No low-VRAM workaround was
+needed. Swarm selected its validated Comfy frontend 1.51.9 and updated PyAV to
+18.1.0; PyTorch remained 2.11.0+cu130. Dependency checks passed.
+
+All five cases completed in 10–25 seconds each, including first-use preprocessing.
+Zero strength reproduced the baseline pixels exactly after both adapters had run.
+The pose-only and combined cases at strength 1 changed pixels but missed the arm
+under these precision settings. Two additional tests at pose strength 1.3 recovered
+it, with and without reference guidance. This illustrates why guidance quality
+must be inspected separately from a successful execution or a pixel difference.
+
+![Installed-instance comparisons](tests/results/live-miao.jpg)
+
+[Live hashes and timings](tests/results/live-checks.json) include the five-case
+test and the two stronger-pose cases. A Krea 2 NVFP4 generation also succeeded
+with a Pose Image supplied: its graph contained no Anima nodes. All installed
+Swarm extensions were rebuilt against the updated core and loaded successfully;
+Timeline required the upstream `VideoEndFrame` → `VideoEndImage` rename. Fourteen
+snapshotted preset parameter maps were compared after deployment and were unchanged.
+
 ## Reproduce
 
 Run the cache tests in your ComfyUI Python environment:

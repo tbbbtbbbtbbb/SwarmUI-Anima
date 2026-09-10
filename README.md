@@ -69,6 +69,8 @@ quality; lower resolutions are supported.
 
 These are appearance and pose guidance models, not exact identity or pose locks.
 Pose Preview-2 remains experimental, and fine-tunes or other LoRAs can weaken it.
+If MiaoMiao misses the pose at strength `1`, try `1.3`; this helped in the recorded
+tests. Keep adjusting the generation controls without editing your preset.
 Multiple references do not provide character-slot binding or identity mixing.
 
 ## API
