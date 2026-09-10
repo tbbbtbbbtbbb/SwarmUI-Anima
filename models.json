@@ -1,0 +1,58 @@
+[
+  {
+    "repo": "LuciferTC/Anima-IP-Adapter",
+    "revision": "99e9c351c9f00bdd188b5added0066a80d3b1de6",
+    "source": "ip_adapter-Character_Reference-10.safetensors",
+    "path": "ipadapter/anima-character-reference.safetensors",
+    "size": 503229576,
+    "sha256": "dc9612cc28b55f00ba39f6169bfe4871130be028a55682ab54dd51360acb8232"
+  },
+  {
+    "repo": "Claquasse/Anima-Control-Pose",
+    "revision": "8f559771d5a49a02fa03f7df2a05ccb7eecb3a2a",
+    "source": "anima_pose_preview2.safetensors",
+    "path": "loras/anima-pose-preview2.safetensors",
+    "size": 75051096,
+    "sha256": "c10fa11628e9b1bf16dfe095ac5c6dc4ddd9ae77d7fe023d0a1857f7e29c516f"
+  },
+  {
+    "repo": "Claquasse/Anima-Control-Pose",
+    "revision": "8f559771d5a49a02fa03f7df2a05ccb7eecb3a2a",
+    "source": "detector/rtmw-dw-x-l_simcc-cocktail14_270e-256x192_20231122.onnx",
+    "path": "anima/detector/dwpose.onnx",
+    "size": 228708578,
+    "sha256": "9a9bc17c13ff0a1e37507f45a037a21bc410cd08374b0e664c57d0080843aa58"
+  },
+  {
+    "repo": "Claquasse/Anima-Control-Pose",
+    "revision": "8f559771d5a49a02fa03f7df2a05ccb7eecb3a2a",
+    "source": "detector/yolox_m_8xb8-300e_humanart-c2c7a14a.onnx",
+    "path": "anima/detector/yolox.onnx",
+    "size": 101400344,
+    "sha256": "3dea6513388889f0fff4b77bf7a26013600321b9eb9ceb0e9a400a82572f5f23"
+  },
+  {
+    "repo": "google/siglip2-base-patch16-512",
+    "revision": "a89f5c5093f902bf39d3cd4d81d2c09867f0724b",
+    "source": "config.json",
+    "path": "siglip2/siglip2-base-patch16-512/config.json",
+    "size": 276,
+    "sha256": "a15bc39fbcd92498dea6d5d3cb2b0d8b9ba389d6a3f2b565ea66128a2d141934"
+  },
+  {
+    "repo": "google/siglip2-base-patch16-512",
+    "revision": "a89f5c5093f902bf39d3cd4d81d2c09867f0724b",
+    "source": "model.safetensors",
+    "path": "siglip2/siglip2-base-patch16-512/model.safetensors",
+    "size": 1503344520,
+    "sha256": "fe0e601c625e69eed8e73500d39e9b6164403fe03db8048e87913c3cefbbb3fe"
+  },
+  {
+    "repo": "google/siglip2-base-patch16-512",
+    "revision": "a89f5c5093f902bf39d3cd4d81d2c09867f0724b",
+    "source": "preprocessor_config.json",
+    "path": "siglip2/siglip2-base-patch16-512/preprocessor_config.json",
+    "size": 394,
+    "sha256": "63ff380d3e424f93e6fbca5cc8e74eeed882e96fd6be2b7728aed308f3ad1513"
+  }
+]

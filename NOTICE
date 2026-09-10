@@ -1,0 +1,14 @@
+SwarmUI Anima
+Copyright 2026 tbbbtbbbtbbb
+
+Reference conditioning is based on LuciferTC9527's ComfyUI Anima IP-Adapter
+(Apache License 2.0): https://github.com/LuciferTC9527/ComfyUI-Anima_IP-Adapter
+The integration uses scoped ModelPatcher patches, including all trained LoRA
+weights, rather than modifying shared model blocks in place.
+
+Pose conditioning follows Claquasse's Anima Control Pose Preview-2 method
+and WholeBody-133 skeleton convention:
+https://huggingface.co/Claquasse/Anima-Control-Pose
+
+Model weights are downloaded separately. This code's license does not change
+the licenses of Anima, its adapters, SigLIP2, or the pose detectors.

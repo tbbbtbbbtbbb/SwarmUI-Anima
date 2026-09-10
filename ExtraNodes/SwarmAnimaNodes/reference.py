@@ -1,9 +1,9 @@
 from pathlib import Path
+from importlib.metadata import version
 
 import numpy as np
 from PIL import Image
 import torch
-import torch.nn.functional as F
 from transformers import SiglipVisionModel
 
 import folder_paths
@@ -26,7 +26,7 @@ class SwarmAnimaEncode:
     def encode(self, image):
         directory = Path(folder_paths.models_dir) / 'siglip2/siglip2-base-patch16-512'
         files = [directory / 'config.json', directory / 'model.safetensors']
-        key = image_key(image[:1].cpu(), 'siglip2-last-black-pad-512-bilinear-v1', files)
+        key = image_key(image[:1].cpu(), f'siglip2-last-black-pad-512-bilinear-v1-{version("transformers")}', files)
 
         def compute():
             # This small encoder runs on CPU, leaving the GPU available to the main model.

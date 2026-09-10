@@ -18,7 +18,7 @@ public class SwarmAnimaExtension : Extension
     {
         Description = "Reference images and pose control for Anima.";
         ExtensionAuthor = "tbbbtbbbtbbb";
-        License = "MIT";
+        License = "Apache-2.0";
         Tags = ["parameters", "nodes"];
         ScriptFiles.Add("Assets/anima.js");
         ComfyUISelfStartBackend.CustomNodePaths.Add(Path.GetFullPath($"{FilePath}ExtraNodes"));

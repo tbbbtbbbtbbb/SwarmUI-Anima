@@ -1,4 +1,5 @@
 from pathlib import Path
+from importlib.metadata import version
 
 import cv2
 import numpy as np
@@ -43,7 +44,7 @@ class SwarmAnimaPose:
     def detect(self, image, width, height):
         directory = Path(folder_paths.models_dir) / 'anima/detector'
         files = [directory / 'yolox.onnx', directory / 'dwpose.onnx']
-        key = image_key(image[:1].cpu(), f'dwpose-wholebody133-r0-v1-{width}x{height}', files)
+        key = image_key(image[:1].cpu(), f'dwpose-wholebody133-r0-v1-{version("rtmlib")}-{width}x{height}', files)
 
         def compute():
             estimator = Wholebody(det=str(files[0]), det_input_size=(640, 640), pose=str(files[1]),
