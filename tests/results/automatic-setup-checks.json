@@ -1,0 +1,10 @@
+{
+  "fresh_dependency_missing": true,
+  "dependency_installed": "0.0.16",
+  "existing_packages_unchanged": true,
+  "model_files": 7,
+  "bytes": 2411734784,
+  "first_setup_seconds": 104.47,
+  "offline_repeat_seconds": 1.59,
+  "offline_repeat_skips_pip_and_downloads": true
+}

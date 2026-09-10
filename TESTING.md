@@ -122,6 +122,32 @@ Swarm extensions were rebuilt against the updated core and loaded successfully;
 Timeline required the upstream `VideoEndFrame` → `VideoEndImage` rename. Fourteen
 snapshotted preset parameter maps were compared after deployment and were unchanged.
 
+## Automatic installation
+
+The extension now uses ComfyUI's native prestartup hook for both Swarm's bundled
+ExtraNodes path and a direct installation of this repository into ComfyUI's
+custom_nodes folder. No generation code or saved presets were changed.
+
+- An isolated Python environment started without `rtmlib`, and the model directory
+  was empty. The startup hook installed it and downloaded/verified all seven real
+  assets (2,411,734,784 bytes) in 104 seconds on the test connection.
+- The next setup run took 1.6 seconds with network and pip calls replaced by failing
+  stubs. Every asset was reused and checked locally.
+- A plain external environment without OpenCV or ONNX Runtime installed those
+  automatically while retaining its existing package versions. The resulting
+  detector successfully returned one 133-keypoint pose from the test fixture.
+- A real isolated ComfyUI startup discovered the repository's startup hook and
+  registered all four Anima nodes. Asset lookup also passed with a different
+  preconfigured IP-Adapter search directory.
+- Eight installer tests cover verified downloads, offline reuse, preserved file
+  conflicts, corrupt/network-failed downloads, retries, concurrent startup,
+  dependency isolation, and preservation of newer installed dependencies.
+  Together with the six cache tests, all 14 tests pass.
+
+The small [setup report](tests/results/automatic-setup-checks.json) records the
+fresh-download and offline-repeat timings. Required downloads happen once, during
+backend startup; internet access is unnecessary for subsequent extension use.
+
 ## Reproduce
 
 Run the cache tests in your ComfyUI Python environment:
