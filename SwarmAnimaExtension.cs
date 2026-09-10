@@ -33,7 +33,7 @@ public class SwarmAnimaExtension : Extension
             "1", Min: 0, Max: 2, Step: 0.05, Group: group, FeatureFlag: "swarmanima", OrderPriority: 2,
             ViewType: ParamViewType.SLIDER, DependNonDefault: PoseImage.Type.ID));
         ReferenceStrength = T2IParamTypes.Register<double>(new("Reference Strength",
-            "Use one image from Swarm's Image Prompt input to guide Anima's appearance. Zero disables it. Extra images are ignored.",
+            "Drag or paste a reference into the prompt box to guide Anima's appearance. Zero disables it. Extra images are ignored.",
             "1", Min: 0, Max: 2, Step: 0.05, Group: group, FeatureFlag: "swarmanima", OrderPriority: 3,
             ViewType: ParamViewType.SLIDER));
         PrimaryReferenceImage = T2IParamTypes.Register<int>(new("Primary Reference Image",
@@ -46,6 +46,20 @@ public class SwarmAnimaExtension : Extension
             "End reference conditioning at this fraction of denoising (1 = end).",
             "1", Min: 0, Max: 1, Step: 0.05, Group: group, FeatureFlag: "swarmanima", OrderPriority: 6, IsAdvanced: true));
 
+        T2IParamInput.LateSpecialParameterHandlers.Add(input =>
+        {
+            bool active = input.Get(T2IParamTypes.Model)?.ModelClass?.CompatClass == T2IModelClassSorter.CompatAnima
+                && ((input.TryGet(PoseImage, out _) && input.Get(PoseStrength, 1) > 0)
+                    || (input.TryGet(T2IParamTypes.PromptImages, out List<Image> images) && images.Count > 0 && input.Get(ReferenceStrength, 1) > 0));
+            if (active)
+            {
+                input.RequiredFlags.Add("swarmanima");
+            }
+            else
+            {
+                input.RequiredFlags.Remove("swarmanima");
+            }
+        });
         WorkflowGenerator.AddStep(Apply, -6.5);
     }
 
