@@ -132,7 +132,8 @@ class SwarmAnimaReference:
         module.load_state_dict({k: v for k, v in weights.items() if k.startswith('blocks.')}, strict=True, assign=True)
         adapter = comfy.model_patcher.ModelPatcher(module, load_device=mm.get_torch_device(), offload_device=mm.unet_offload_device())
         patched = model.clone()
-        apply_lora(patched, weights, 'lora.base_model.model.', strength, metadata.get('lora_alpha'))
+        # The companion LoRA prepares the model; strength scales image attention only.
+        apply_lora(patched, weights, 'lora.base_model.model.', 1, metadata.get('lora_alpha'))
         sampling = model.get_model_object('model_sampling')
         patch = ReferencePatch(adapter, features, strength, sampling.percent_to_sigma(start), sampling.percent_to_sigma(end))
         patched.set_model_patch(patch, 'post_input')
@@ -180,7 +181,7 @@ class SwarmAnimaPoseApply:
             return (model,)
         weights, _ = load_weights('loras', 'anima-pose-preview2.safetensors')
         patched = model.clone()
-        apply_lora(patched, weights, 'diffusion_model.', strength)
+        apply_lora(patched, weights, 'diffusion_model.', 1)
         control = control_latent['samples']
         if control.ndim == 4:
             control = control.unsqueeze(2)
